@@ -47,7 +47,7 @@ const LoginComponent = () => {
               sx={{
                 color: "white",
                 textAlign: "center",
-                backgroundImage: `url(${"src/assets/joel-mott-O9Ogddfvl-U-unsplash.jpg"})`,
+                backgroundImage: `url(${"public/assets/joel-mott-O9Ogddfvl-U-unsplash.jpg"})`,
                 backgroundSize: "cover",
                 display: { xs: "none", md: "block" },
               }}
@@ -89,7 +89,7 @@ const LoginComponent = () => {
 
               <Box sx={{ marginTop: "1rem", cursor: "pointer" }}>
                 <img
-                  src="src/assets/icons8-google-48.png"
+                  src="public/assets/icons8-google-48.png"
                   height={"30rem"}
                   width={"30rem"}
                 />
