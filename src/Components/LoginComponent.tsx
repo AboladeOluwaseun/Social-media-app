@@ -37,7 +37,7 @@ const LoginComponent = () => {
           elevation={4}
           sx={{
             width: { xs: "80%", sm: "70%", md: "50%" },
-            height: "60vh",
+            height: {xs:'80vh', md:"60vh"},
           }}
         >
           <Grid container sx={{ height: "100%" }}>
