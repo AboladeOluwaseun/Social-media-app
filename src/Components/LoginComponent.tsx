@@ -40,7 +40,7 @@ const LoginComponent = () => {
             height: {xs:'80vh', md:"60vh"},
           }}
         >
-          <Grid container sx={{ height: "100%" }}>
+          <Grid container sx={{ height: "80%" }}>
             <Grid
               item
               xs={6}
