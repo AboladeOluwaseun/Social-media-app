@@ -36,11 +36,11 @@ const LoginComponent = () => {
         <Paper
           elevation={4}
           sx={{
-            width: { xs: "90%", sm: "70%", md: "50%" },
-            height: {xs:'80vh', md:"60vh"},
+            width: { xs: "100%", sm: "70%", md: "50%" },
+            height: {xs:'55vh', md:"60vh"},
           }}
         >
-          <Grid container sx={{ height: "80%" }}>
+          <Grid container>
             <Grid
               item
               xs={6}
@@ -50,6 +50,7 @@ const LoginComponent = () => {
                 backgroundImage: `url(${"/assets/joel-mott-O9Ogddfvl-U-unsplash.jpg"})`,
                 backgroundSize: "cover",
                 display: { xs: "none", md: "block" },
+                
               }}
             >
               <Box
