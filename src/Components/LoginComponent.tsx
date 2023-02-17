@@ -28,7 +28,7 @@ const LoginComponent = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          height: "75vh",
           witdth: "80vw",
           // backgroundColor:'red'
         }}
@@ -37,7 +37,7 @@ const LoginComponent = () => {
           elevation={4}
           sx={{
             width: { xs: "100%", sm: "70%", md: "50%" },
-            height: {xs:'55vh', md:"60vh"},
+            height: {xs:'60vh', md:"65vh"},
           }}
         >
           <Grid container>
