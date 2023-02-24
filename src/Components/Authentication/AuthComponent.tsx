@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import AuthForm from "./AuthForm";
 import { useAuth } from "../../context/AuthContext";
 
-
 const AuthComponent = () => {
   const { googleSignIn } = useAuth();
   return (
@@ -17,86 +16,87 @@ const AuthComponent = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-
         }}
       >
-        
-          <Box  >
-            <Paper   elevation={8}>
-              {/* Authentication page message */}
+        <Box sx={{ width: { xs: "100%", sm: "70%" } }}>
+          <Paper elevation={8}>
+            {/* Authentication page message */}
             <Grid container>
-            <Grid
-              item
-              xs={6}
-              sx={{
-                color: "white",
-                textAlign: "center",
-                backgroundImage: `url(${"/assets/joel-mott-O9Ogddfvl-U-unsplash.jpg"})`,
-                backgroundSize: "cover",
-                display: { xs: "none", md: "block" },
-              }}
-            >
-              <Box
+              <Grid
+                item
+                xs={6}
                 sx={{
-                  backgroundColor: "rgba(49, 68, 195, 0.8)",
-                  width: "100%",
-                  height: "100%",
+                  color: "white",
+                  textAlign: "center",
+                  backgroundImage: `url(${"/assets/joel-mott-O9Ogddfvl-U-unsplash.jpg"})`,
+                  backgroundSize: "cover",
+                  display: { xs: "none", md: "block" },
                 }}
               >
-                <Box sx={{ paddingY: "2rem" }}>
-                  <Typography variant="h5" fontWeight={800}>
-                    ChatUp
-                  </Typography>
-                
-                  <Typography
-                    paddingTop={4}
-                    paddingX={4}
-                    sx={{ fontSize: "1.5rem" }}
-                  >
-                    Discover something new: Find new interests, hobbies, and
-                    perspectives by exploring our vast community.
-                  </Typography>
+                <Box
+                  sx={{
+                    backgroundColor: "rgba(49, 68, 195, 0.8)",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <Box sx={{ paddingY: "2rem" }}>
+                    <Typography variant="h5" fontWeight={800}>
+                      ChatUp
+                    </Typography>
+
+                    <Typography
+                      paddingTop={4}
+                      paddingX={4}
+                      sx={{ fontSize: "1.5rem" }}
+                    >
+                      Discover something new: Find new interests, hobbies, and
+                      perspectives by exploring our vast community.
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            </Grid>
+              </Grid>
 
-           {/* Authentication page registration/login form  */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{
-                color: "black",
-                paddingY: "2rem",
-                textAlign: "center",
-              }}
-            >
-              <Typography sx={{ fontSize: "0.9rem", fontWeight: "bold" }}>
-                Sign In to chatUp
-              </Typography>
-
-              <Box
-                onClick={googleSignIn}
-                sx={{ marginTop: "1rem", cursor: "pointer" }}
+              {/* Authentication page registration/login form  */}
+              <Grid
+                flexDirection='row'
+                item
+                xs={12}
+                md={6}
+                sx={{
+                  color: "black",
+                  paddingY: "2rem",
+                  textAlign: "center",
+                 
+                }}
               >
-                <img
-                  src="/assets/icons8-google-48.png"
-                  height={"30rem"}
-                  width={"30rem"}
-                />
-              </Box>
+                <Typography sx={{ fontSize: "0.9rem", fontWeight: "bold" }}>
+                  Sign In to chatUp
+                </Typography>
 
-              <Typography sx={{ fontSize: "0.8rem" }}>
-                or Sign In with
-              </Typography>
-              <AuthForm />
+                <Box
+                  sx={{
+                    marginTop: "1rem",
+                    cursor: "pointer",
+                    display: "inline-block",
+                  }}
+                >
+                  <img
+                    onClick={googleSignIn}
+                    src="/assets/icons8-google-48.png"
+                    height={"30rem"}
+                    width={"30rem"}
+                  />
+                </Box>
+
+                <Typography sx={{ fontSize: "0.8rem" }}>
+                  or Sign In with
+                </Typography>
+                <AuthForm />
+              </Grid>
             </Grid>
-          </Grid>
-            </Paper>
-            
-          </Box>
-        
-        
+          </Paper>
+        </Box>
       </Container>
     </>
   );
