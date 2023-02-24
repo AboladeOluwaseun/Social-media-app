@@ -17,13 +17,14 @@ const AuthComponent = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-          width:'90vw'
+          // backgroundColor:'red'
         }}
       >
         
-          
-          {/* Authentication page message */}
-          <Grid container>
+          <Box >
+            <Paper  elevation={8}>
+              {/* Authentication page message */}
+            <Grid container>
             <Grid
               item
               xs={6}
@@ -93,7 +94,11 @@ const AuthComponent = () => {
               <AuthForm />
             </Grid>
           </Grid>
-       
+            </Paper>
+            
+          </Box>
+        
+        
       </Container>
     </>
   );
