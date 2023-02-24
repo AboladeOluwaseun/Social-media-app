@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LandingPage from "./Pages/HomePage";
-import Login from "./Pages/Login";
+import Login from "./Pages/AuthPage";
 import { createTheme, ThemeProvider } from "@mui/material";
-
+import { AuthContextProvider } from "../src/context/AuthContext";
 const theme = createTheme({
   palette: {
     primary: {
@@ -10,23 +10,23 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily:'Poppins',
-    fontWeightBold:800,
-    
-
-  }
+    fontFamily: "Poppins",
+    fontWeightBold: 800,
+  },
 });
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </BrowserRouter>
-    </ThemeProvider>
+    <AuthContextProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </ThemeProvider>
+    </AuthContextProvider>
   );
 }
 

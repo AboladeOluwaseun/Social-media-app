@@ -2,25 +2,13 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
-import TextField from "@mui/material/TextField";
-import {
-  FormControl,
-  InputBase,
-  Typography,
-  Checkbox,
-  FormControlLabel,
-} from "@mui/material";
-import Button from "@mui/material/Button";
-import styled from "@emotion/styled";
+import Typography from "@mui/material/Typography";
+import AuthForm from "./AuthForm";
+import { useAuth } from "../../context/AuthContext";
 
-const InputField = styled(TextField)({
-  padding: "0 1px",
-  gap: "2px",
-  marginTop: "2rem",
-  width: "80%",
-});
 
-const LoginComponent = () => {
+const AuthComponent = () => {
+  const { googleSignIn } = useAuth();
   return (
     <>
       <Container
@@ -29,17 +17,12 @@ const LoginComponent = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-         
-          // backgroundColor:'red'
+          width:'90vw'
         }}
       >
-        <Paper
-          elevation={4}
-          sx={{
-            width: { xs: "100%", sm: "70%", md: "50%" },
-            height: {xs:'75vh', md:"55vh"},
-          }}
-        >
+        
+          
+          {/* Authentication page message */}
           <Grid container>
             <Grid
               item
@@ -50,7 +33,6 @@ const LoginComponent = () => {
                 backgroundImage: `url(${"/assets/joel-mott-O9Ogddfvl-U-unsplash.jpg"})`,
                 backgroundSize: "cover",
                 display: { xs: "none", md: "block" },
-                
               }}
             >
               <Box
@@ -60,12 +42,18 @@ const LoginComponent = () => {
                   height: "100%",
                 }}
               >
-                <Box sx={{paddingY:'2rem'}}>
-                  <Typography variant="h5" fontWeight={800}>ChatUp</Typography>
+                <Box sx={{ paddingY: "2rem" }}>
+                  <Typography variant="h5" fontWeight={800}>
+                    ChatUp
+                  </Typography>
                   {/* <Typography paddingTop={1} sx={{ fontSize: "0.5rem" }}>
                     Speed, Easy, Fast
                   </Typography> */}
-                  <Typography paddingTop={4} paddingX={4} sx={{ fontSize: "1.5rem", }}>
+                  <Typography
+                    paddingTop={4}
+                    paddingX={4}
+                    sx={{ fontSize: "1.5rem" }}
+                  >
                     Discover something new: Find new interests, hobbies, and
                     perspectives by exploring our vast community.
                   </Typography>
@@ -73,12 +61,12 @@ const LoginComponent = () => {
               </Box>
             </Grid>
 
+           {/* Authentication page registration/login form  */}
             <Grid
               item
               xs={12}
               md={6}
               sx={{
-                // backgroundColor: "#3144c3",
                 color: "black",
                 paddingY: "2rem",
                 textAlign: "center",
@@ -88,7 +76,10 @@ const LoginComponent = () => {
                 Sign In to chatUp
               </Typography>
 
-              <Box sx={{ marginTop: "1rem", cursor: "pointer" }}>
+              <Box
+                onClick={googleSignIn}
+                sx={{ marginTop: "1rem", cursor: "pointer" }}
+              >
                 <img
                   src="/assets/icons8-google-48.png"
                   height={"30rem"}
@@ -99,39 +90,13 @@ const LoginComponent = () => {
               <Typography sx={{ fontSize: "0.8rem" }}>
                 or Sign In with
               </Typography>
-
-              <form noValidate autoComplete="off">
-                <InputField
-                  variant="outlined"
-                  required
-                  size="small"
-                  label="Email Address"
-                />
-                <InputField
-                  variant="outlined"
-                  required
-                  size="small"
-                  label="Password"
-                />
-                <FormControlLabel
-                  sx={{ marginTop: "1rem" }}
-                  control={<Checkbox defaultChecked />}
-                  label="Remember me"
-                />
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{ marginTop: "1rem", width: "80%" }}
-                >
-                  Log in
-                </Button>
-              </form>
+              <AuthForm />
             </Grid>
           </Grid>
-        </Paper>
+       
       </Container>
     </>
   );
 };
 
-export default LoginComponent;
+export default AuthComponent;
