@@ -1,5 +1,5 @@
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import InputField from "./InputField";
@@ -10,25 +10,28 @@ import {
   InputAdornment,
   IconButton,
   Typography,
-  Box
+  Box,
 } from "@mui/material";
 
 import Button from "@mui/material/Button";
+import { Dispatch, SetStateAction } from "react";
+type Dispatcher<S> = Dispatch<SetStateAction<S>>;
 
-type Props = {};
+type Props = {
+  signedUp: boolean
+  setSignedUp: Dispatcher<boolean>;
+};
 
-const AuthForm = (props: Props) => {
-  const [signedUp, setSignedUp] = useState<boolean>(true);
+const AuthForm = ({signedUp, setSignedUp}: Props) => {
+  
   const [firstname, setFirstname] = useState<string>("");
   const [surname, setSurname] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
- 
 
   // const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const { signUpHandler } = useAuth();
-  console.log(showPassword)
+  const { signUpHandler} = useAuth();
 
   const inputFieldObjectArray: inputProps[] = [
     {
@@ -68,14 +71,14 @@ const AuthForm = (props: Props) => {
   //End Adornment
   const endAdornment = (
     <InputAdornment position="end">
-    <IconButton
-      aria-label="toggle password visibility"
-      onClick={()=>setShowPassword(!showPassword)}
-      edge="end"
-    >
-      {showPassword ? <VisibilityOff /> : <Visibility />}
-    </IconButton>
-  </InputAdornment>
+      <IconButton
+        aria-label="toggle password visibility"
+        onClick={() => setShowPassword(!showPassword)}
+        edge="end"
+      >
+        {showPassword ? <VisibilityOff /> : <Visibility />}
+      </IconButton>
+    </InputAdornment>
   );
 
   //Login Form
@@ -105,7 +108,7 @@ const AuthForm = (props: Props) => {
         key={index}
         type={inputType.type}
         setInputValue={inputType.setInputValue}
-        endAdornment={index=== 3 && endAdornment}
+        endAdornment={index === 3 && endAdornment}
       />
     );
   });
@@ -140,9 +143,12 @@ const AuthForm = (props: Props) => {
           {signedUp ? "Log in" : "Sign up"}
         </Button>
 
-        <Typography sx={{marginTop: '2rem'}}>
-          Don't have an account? Sign Up{" "}
-          <Box component="span"
+        <Typography sx={{ marginTop: "2rem" }}>
+          {signedUp
+            ? "Don't have an account? Sign Up"
+            : "Already have an account? Log in"}
+          <Box
+            component="span"
             onClick={() => {
               setSignedUp(!signedUp);
             }}
@@ -150,10 +156,12 @@ const AuthForm = (props: Props) => {
               color: "primary.main",
               cursor: "pointer",
               textDecoration: "underline",
+              marginLeft: "0.4rem",
             }}
           >
             Here
           </Box>
+          .
         </Typography>
       </form>
     </>

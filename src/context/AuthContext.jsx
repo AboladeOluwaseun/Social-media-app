@@ -1,7 +1,8 @@
-import { useContext, createContext } from "react";
+import { useContext, createContext, useState } from "react";
 import { auth } from '../../firbaseconfig'
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
+
 
 const AuthContext = createContext();
 export const useAuth = () => {
@@ -50,7 +51,8 @@ export const AuthContextProvider = ({ children }) => {
 
   const value = {
     signUpHandler,
-    googleSignIn
+    googleSignIn,
+    
   };
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

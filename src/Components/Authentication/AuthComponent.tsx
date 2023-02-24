@@ -5,9 +5,12 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import AuthForm from "./AuthForm";
 import { useAuth } from "../../context/AuthContext";
+import { useState } from "react";
 
 const AuthComponent = () => {
-  const { googleSignIn } = useAuth();
+  const [signedUp, setSignedUp] = useState<boolean>(true);
+
+  const { googleSignIn,  } = useAuth();
   return (
     <>
       <Container
@@ -59,7 +62,7 @@ const AuthComponent = () => {
 
               {/* Authentication page registration/login form  */}
               <Grid
-                flexDirection='row'
+                flexDirection="row"
                 item
                 xs={12}
                 md={6}
@@ -67,32 +70,33 @@ const AuthComponent = () => {
                   color: "black",
                   paddingY: "2rem",
                   textAlign: "center",
-                 
                 }}
               >
-                <Typography sx={{ fontSize: "0.9rem", fontWeight: "bold" }}>
-                  Sign In to chatUp
+                <Typography sx={{ fontSize: "1.7rem", fontWeight: "bold" }}>
+                  {signedUp ? 'Sign In to chatUp' : 'Sign Up'}
                 </Typography>
 
-                <Box
-                  sx={{
-                    marginTop: "1rem",
-                    cursor: "pointer",
-                    display: "inline-block",
-                  }}
-                >
-                  <img
-                    onClick={googleSignIn}
-                    src="/assets/icons8-google-48.png"
-                    height={"30rem"}
-                    width={"30rem"}
-                  />
-                </Box>
+                {signedUp && (
+                  <Box
+                    sx={{
+                      marginTop: "1rem",
+                      cursor: "pointer",
+                      display: "inline-block",
+                    }}
+                  >
+                    <img
+                      onClick={googleSignIn}
+                      src="/assets/icons8-google-48.png"
+                      height={"30rem"}
+                      width={"30rem"}
+                    />
+                  </Box>
+                )}
 
-                <Typography sx={{ fontSize: "0.8rem" }}>
-                  or Sign In with
+                <Typography sx={{ fontSize: "0.8rem" , marginTop:'1rem' }}>
+                  or Sign In with Email and Password
                 </Typography>
-                <AuthForm />
+                <AuthForm signedUp={signedUp} setSignedUp={setSignedUp} />
               </Grid>
             </Grid>
           </Paper>
