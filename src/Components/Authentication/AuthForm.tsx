@@ -1,4 +1,5 @@
-import { Visibility, VisibilityOff } from "@mui/icons-material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import InputField from "./InputField";
@@ -9,7 +10,9 @@ import {
   InputAdornment,
   IconButton,
   Typography,
+  Box
 } from "@mui/material";
+
 import Button from "@mui/material/Button";
 
 type Props = {};
@@ -21,8 +24,11 @@ const AuthForm = (props: Props) => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
+ 
+
+  // const handleClickShowPassword = () => setShowPassword((show) => !show);
   const { signUpHandler } = useAuth();
+  console.log(showPassword)
 
   const inputFieldObjectArray: inputProps[] = [
     {
@@ -58,18 +64,21 @@ const AuthForm = (props: Props) => {
       setInputValue: setPassword,
     },
   ];
+
+  //End Adornment
   const endAdornment = (
     <InputAdornment position="end">
-      {" "}
-      <IconButton
-        aria-label="toggle password visibility"
-        edge="end"
-        onClick={handleClickShowPassword}
-      >
-        {showPassword ? <VisibilityOff /> : <Visibility />}
-      </IconButton>
-    </InputAdornment>
+    <IconButton
+      aria-label="toggle password visibility"
+      onClick={()=>setShowPassword(!showPassword)}
+      edge="end"
+    >
+      {showPassword ? <VisibilityOff /> : <Visibility />}
+    </IconButton>
+  </InputAdornment>
   );
+
+  //Login Form
   const LoginForm = inputFieldObjectArray
     .slice(2, 4)
     .map((inputType, index) => {
@@ -82,11 +91,11 @@ const AuthForm = (props: Props) => {
           key={index}
           type={inputType.type}
           setInputValue={inputType.setInputValue}
-          endAdornment={inputType.type === "password" && endAdornment}
+          endAdornment={index === 1 && endAdornment}
         />
       );
     });
-  const signUpForm = inputFieldObjectArray.slice(0).map((inputType, index) => {
+  const signUpForm = inputFieldObjectArray.map((inputType, index) => {
     return (
       <InputField
         variant={inputType.variant}
@@ -96,7 +105,7 @@ const AuthForm = (props: Props) => {
         key={index}
         type={inputType.type}
         setInputValue={inputType.setInputValue}
-        endAdornment={inputType.type === "password" && endAdornment}
+        endAdornment={index=== 3 && endAdornment}
       />
     );
   });
@@ -133,7 +142,7 @@ const AuthForm = (props: Props) => {
 
         <Typography sx={{marginTop: '2rem'}}>
           Don't have an account? Sign Up{" "}
-          <Typography
+          <Box component="span"
             onClick={() => {
               setSignedUp(!signedUp);
             }}
@@ -144,7 +153,7 @@ const AuthForm = (props: Props) => {
             }}
           >
             Here
-          </Typography>
+          </Box>
         </Typography>
       </form>
     </>

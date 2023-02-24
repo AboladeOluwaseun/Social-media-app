@@ -15,7 +15,7 @@ const AuthComponent = () => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          minHeight: "100vh",
         }}
       >
         <Box sx={{ width: { xs: "100%", sm: "70%" } }}>
