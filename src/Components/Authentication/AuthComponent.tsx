@@ -17,12 +17,12 @@ const AuthComponent = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
-          // backgroundColor:'red'
+
         }}
       >
         
-          <Box >
-            <Paper  elevation={8}>
+          <Box  >
+            <Paper   elevation={8}>
               {/* Authentication page message */}
             <Grid container>
             <Grid
@@ -47,9 +47,7 @@ const AuthComponent = () => {
                   <Typography variant="h5" fontWeight={800}>
                     ChatUp
                   </Typography>
-                  {/* <Typography paddingTop={1} sx={{ fontSize: "0.5rem" }}>
-                    Speed, Easy, Fast
-                  </Typography> */}
+                
                   <Typography
                     paddingTop={4}
                     paddingX={4}

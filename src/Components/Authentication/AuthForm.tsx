@@ -131,7 +131,7 @@ const AuthForm = (props: Props) => {
           {signedUp ? "Log in" : "Sign up"}
         </Button>
 
-        <Typography>
+        <Typography sx={{marginTop: '2rem'}}>
           Don't have an account? Sign Up{" "}
           <Typography
             onClick={() => {
